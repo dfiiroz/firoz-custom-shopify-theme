@@ -1,0 +1,32 @@
+  <section class="menu">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        {% include 'menu' %}
+
+      </nav>
+    </div>
+  </section>
+
+  {% schema %}
+  {
+    "name": "Header Navigation",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Header Menu",
+        "default": "main-menu"
+      }
+    ],
+    "presets": [
+      {
+        "category": "navigation",
+        "name":"Header Menu"
+      }
+    ]
+  }
+  {% endschema %}

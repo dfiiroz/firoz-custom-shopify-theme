@@ -1,0 +1,52 @@
+  <section class="call-to-action section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="title">
+            <h2>{{ section.settings.title }}</h2>
+            <p>{{ section.settings.subheading }}</p>
+          </div>
+          <div class="col-lg-6 offset-3">
+            <div class="input-group subscription-form">
+              <input type="text" class="form-control" placeholder="Enter Your Email Address">
+              <span class="input-group-btn">
+                <button class="btn btn-main" type="button">{{ section.settings.button }}</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    {% schema %}
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "SUBSCRIBE TO NEWSLETTER"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, <br> facilis numquam impedit ut sequi. Minus facilis vitae excepturi sit laboriosam"
+      },
+      {
+        "type": "text",
+        "id": "button",
+        "label": "Button Text",
+        "default": "Subscribe Now!"
+      }
+    ],
+    "presets": [
+      {
+        "category": "promotion",
+        "name":"Newsletter"
+      }
+    ]
+  }
+  {% endschema %}

@@ -1,0 +1,149 @@
+    <section class="product-category">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title text-center">
+            <h2>{{ section.settings.title }}</h2>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="category-box">
+            <a href="{{ section.settings.lt_url }}">
+
+              {% if section.settings.lt_img != blank %}
+                 <img src="{{ section.settings.lt_img | img_url: '1920x' }}" alt="">
+                 {% else %}
+                 {{ 'collection-1' | placeholder_svg_tag: 'img-thumbnail' }}
+              {% endif %}
+              <div class="content">
+                <h3>{{ section.settings.lt_heading }}</h3>
+                <p>{{ section.settings.lt_subheading }}</p>
+              </div>
+            </a>  
+          </div>
+          <div class="category-box">
+            <a href="{{ section.settings.lb_url }}">
+
+              {% if section.settings.lb_img != blank %}
+                 <img src="{{ section.settings.lb_img | img_url: '1920x' }}" alt="">
+                 {% else %}
+                 {{ 'collection-2' | placeholder_svg_tag: 'img-thumbnail' }}
+              {% endif %}
+              <div class="content">
+                <h3>{{ section.settings.lb_heading }}</h3>
+                <p>{{ section.settings.lb_subheading }}</p>
+              </div>
+            </a>  
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="category-box category-box-2">
+            <a href="{{ section.settings.r_url }}">
+
+              {% if section.settings.r_img != blank %}
+                 <img src="{{ section.settings.r_img | img_url: '1920x' }}" alt="">
+                 {% else %}
+                 {{ 'collection-3' | placeholder_svg_tag: 'img-thumbnail' }}
+              {% endif %}
+              <div class="content">
+                <h3>{{ section.settings.r_heading }}</h3>
+                <p>{{ section.settings.r_subheading }}</p>
+              </div>
+            </a>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% schema %}
+  {
+    "name": "Header Navigation",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Category Title",
+        "default": "Product Category"
+      },
+
+      {
+        "type": "text",
+        "id": "lt_heading",
+        "label": "Left Top Category Heading",
+        "default": "Clothes Sales"
+      },
+      {
+        "type": "text",
+        "id": "lt_subheading",
+        "label": "Left Top Category Subheading",
+        "default": "Shop New Season Clothing"
+      },
+      {
+        "type": "image_picker",
+        "id": "lt_img",
+        "label": "Left Top Category Image"
+      },
+      {
+        "type": "url",
+        "id": "lt_url",
+        "label": "Left Top Category Url",
+        "info": "Select Appropriate Link"
+      },
+      {
+        "type": "text",
+        "id": "lb_heading",
+        "label": "Left Bottom Category Heading",
+        "default": "Smart Casuals"
+      },
+      {
+        "type": "text",
+        "id": "lb_subheading",
+        "label": "Left Bottom Category Subheading",
+        "default": "Get Wide Range Selection"
+      },
+      {
+        "type": "image_picker",
+        "id": "lb_img",
+        "label": "Left Bottom Category Image"
+      },
+      {
+        "type": "url",
+        "id": "lb_url",
+        "label": "Left Bottom Category Url",
+        "info": "Select Appropriate Link"
+      },
+      {
+        "type": "text",
+        "id": "r_heading",
+        "label": "Right Category Heading",
+        "default": "Jewellery"
+      },
+      {
+        "type": "text",
+        "id": "r_subheading",
+        "label": "Right Category Subheading",
+        "default": "Special Design Comes First"
+      },
+      {
+        "type": "image_picker",
+        "id": "r_img",
+        "label": "Right Category Image"
+      },
+      {
+        "type": "url",
+        "id": "r_url",
+        "label": "Right Category Url",
+        "info": "Select Appropriate Link"
+      }
+    ],
+    "presets": [
+      {
+        "category": "collection",
+        "name":"Product Category"
+      }
+    ]
+  }
+  {% endschema %}

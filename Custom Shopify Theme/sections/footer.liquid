@@ -1,0 +1,57 @@
+  <footer class="footer section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="social-media">
+              {% if settings.facebook != blank %}
+               <li><a class="fb-icon" href="{{ settings.facebook }}"><i class="fa fa-facebook"></i></a></li>
+              {% endif %}
+              {% if settings.twitter != blank %}
+               <li><a class="fb-icon" href="{{ settings.twitter }}"><i class="fa fa-twitter"></i></a></li>
+              {% endif %}
+              {% if settings.dribbble != blank %}
+               <li><a class="fb-icon" href="{{ settings.dribbble }}"><i class="fa fa-dribbble"></i></a></li>
+              {% endif %}
+              {% if settings.pinterest != blank %}
+               <li><a class="fb-icon" href="{{ settings.pinterest }}"><i class="fa fa-pinterest"></i></a></li>
+              {% endif %}
+         </ul>
+
+
+          <ul class="footer-menu">
+
+          {% for link in linklists[section.settings.footer_menu].links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+
+
+
+          </ul>
+          <p class="copyright-text"> Copyright &#9400;  {{ 'now' | date: "%Y" }}, {{ section.settings.ctext }} <a href="{{ shop.url }}">{{ shop.name }}</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  {% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "footer_menu",
+        "label": "Footer Menu",
+        "default": "footer"
+      },
+      {
+        "type": "text",
+        "id": "ctext",
+        "label": "Copyright Text",
+        "default": "All Rights Reserved by"
+      }
+    ]
+  }
+  {% endschema %}

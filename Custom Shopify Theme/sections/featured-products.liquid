@@ -1,0 +1,83 @@
+  <section class="products section bg-gray">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title text-center">
+            <h2> {{ section.settings.title }} </h2>
+          </div>
+        </div>
+
+        <div class="row">
+
+          {%- assign our_collection = collections[section.settings.featured_products].products -%}
+
+          {% for product in our_collection limit: section.settings.product_limit %}
+          <div class="col-md-4">
+            <div class="product-item">
+              <div class="product-thumb">
+                <span class="bage">Sale</span>
+                <img class="img-responsive" src="{{ product.featured_image.src | img_url: '600x600' }}" alt="product-img">
+                <div class="preview-meta">
+                  <ul>
+                    <li>
+                      <a href="{{ product.url }}"><i class="fa fa-search"></i></a>
+                    </li>
+                    <li>
+                      <form id="form-{{product.handle}}" method="POST" action="/cart/add">
+                        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                        <a onclick="document.getElementById('form-{{product.handle}}').submit()"><i class="fa fa-shopping-cart"></i></a>
+                      </form>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="product-content">
+                <h4><a href="{{ product.url }}">{{ product.title }}</a></h4>
+                <p class="price">{{ product.price | money_with_currency }}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+    {% schema %}
+  {
+    "name": "Featured Products",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Trending Products"
+      },
+      {
+        "type": "collection",
+        "id": "featured_products",
+        "label": "Collection Products",
+        "info": "Selcet Collection to show Featured Products"
+      },
+      {
+        "type": "range",
+        "id": "product_limit",
+        "label": "Product Limit",
+        "min": 3,
+        "max": 12,
+        "step": 3,
+        "default": 6
+      }
+    ],
+    "presets": [
+      {
+        "category": "products",
+        "name":"Featured Products"
+      }
+    ]
+  }
+  {% endschema %}

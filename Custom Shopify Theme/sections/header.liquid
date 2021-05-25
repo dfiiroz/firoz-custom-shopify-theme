@@ -1,0 +1,79 @@
+   <section class="top-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-xs-12 col-sm-4">
+          <div class="contact-number">
+            <i class="fa fa-phone"></i>
+            {% if section.settings.phone != blank %}
+              <span>{{ section.settings.phone }}</span>
+            {% endif %}
+
+          </div>
+        </div>
+
+        <div class="col-md-4 col-xs-12 col-sm-4">
+          <!-- Site Logo -->
+          <div class="logo text-center">
+            <a href="{{ shop.url }}">
+              <!-- replace logo here -->
+              <svg width="205px" height="29px" viewBox="0 0 155 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="40" font-family="AustinBold, Austin" font-weight="bold">
+                  <g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
+                    {% if section.settings.logo != blank %}
+                    <text id="{{ section.settings.logo }}">
+                      <tspan x="108.94" y="325">{{ section.settings.logo }}</tspan>
+                    </text>
+                    {% endif %}                    
+
+                  </g>
+                </g>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4 col-xs-12 col-sm-4">
+          <ul class="top-menu list-inline float-right">
+            <li class="list-inline-item"><a href="/cart"><i class="fa fa-shopping-cart"></i>Cart ({{ cart.item_count }})</a></li>
+
+
+            {% if shop.customer_accounts_enabled %}
+              {% if customer %}
+                <li class="list-inline-item"><a href="/account">account</a></li>
+                <li class="list-inline-item"><i class="fa fa-sign-out"></i>{{ 'log out'  | customer_logout_link }}</li>                  
+               
+              {% else %}
+                 <li class="list-inline-item"><i class="fa fa-sign-in"></i>{{ 'log in ' | customer_login_link }}</li>                  
+                <li class="list-inline-item"><i class="fa fa-user"></i>{{ 'register' | customer_register_link }}</li>                 
+                
+              {% endif %}
+            {% endif %}
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "text",
+        "id": "phone",
+        "label": "Mobile Number",
+        "default": "+8801768626821"
+      },
+      {
+        "type": "text",
+        "id": "logo",
+        "label": "Logo Text",
+        "default": "FIROZ",
+        "info": "Use One Word for Logo"
+      }
+    ]
+  }
+  {% endschema %}
